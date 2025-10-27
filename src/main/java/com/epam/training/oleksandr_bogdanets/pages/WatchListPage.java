@@ -48,11 +48,7 @@ public class WatchListPage extends AbstractPage {
     }
 
     public boolean containsStockBySymbol(String symbol) {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));
         return stockSymbolsColumn.getText().contains(symbol);
     }
 }
