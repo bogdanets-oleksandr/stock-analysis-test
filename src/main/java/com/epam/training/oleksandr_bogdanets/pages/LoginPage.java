@@ -1,6 +1,8 @@
 package com.epam.training.oleksandr_bogdanets.pages;
 
-import com.epam.training.oleksandr_bogdanets.model.Credentials;
+import com.epam.training.oleksandr_bogdanets.model.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.time.Duration;
 
 public class LoginPage extends AbstractPage {
+    private static final Logger logger = LogManager.getRootLogger();
 
     private final static String PAGE_URL = "https://stockanalysis.com/login/";
 
@@ -31,14 +34,16 @@ public class LoginPage extends AbstractPage {
 
     @Override
     public LoginPage openPage() {
+        logger.info("Opening Login page");
         driver.navigate().to(PAGE_URL);
         consentToPersonalDataUse();
         return this;
     }
 
-    public MainPage login(Credentials credentials) {
-        emailInput.sendKeys(credentials.email());
-        passwordInput.sendKeys(credentials.password());
+    public MainPage login(User user) {
+        logger.info("Login Page: Logging in with email {} and password {}", user.email(), user.password());
+        emailInput.sendKeys(user.email());
+        passwordInput.sendKeys(user.password());
         logInButton.click();
         return new MainPage(driver);
     }

@@ -1,6 +1,6 @@
 package com.epam.training.oleksandr_bogdanets;
 
-import com.epam.training.oleksandr_bogdanets.model.Credentials;
+import com.epam.training.oleksandr_bogdanets.model.User;
 import com.epam.training.oleksandr_bogdanets.pages.LoginPage;
 import com.epam.training.oleksandr_bogdanets.util.Utils;
 import org.testng.annotations.BeforeMethod;
@@ -20,8 +20,8 @@ public class LoginTest extends CommonConditions {
 
     @Test
     public void shouldLogin() {
-        Credentials realCredentials = Utils.getRealCredentials();
-        loginPage.login(realCredentials);
+        User realUser = Utils.getRealCredentials();
+        loginPage.login(realUser);
         assertTrue(loginPage.isLoginSuccessful());
     }
 }

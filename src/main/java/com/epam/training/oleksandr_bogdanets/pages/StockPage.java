@@ -1,5 +1,7 @@
 package com.epam.training.oleksandr_bogdanets.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class StockPage extends AbstractPage{
+    private static final Logger logger = LogManager.getRootLogger();
 
     @FindBy(tagName = "h1")
     private WebElement stockNameHeader;
@@ -34,6 +37,7 @@ public class StockPage extends AbstractPage{
     }
 
     public WatchListPage clickWatchlistButton() {
+        logger.info("Stock Page: Clicking watchlist button for {}", getStockName());
         watchListButton.click();
         return new WatchListPage(driver);
     }

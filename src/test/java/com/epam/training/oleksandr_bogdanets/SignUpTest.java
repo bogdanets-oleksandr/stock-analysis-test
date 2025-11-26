@@ -1,6 +1,6 @@
 package com.epam.training.oleksandr_bogdanets;
 
-import com.epam.training.oleksandr_bogdanets.model.Credentials;
+import com.epam.training.oleksandr_bogdanets.model.User;
 import com.epam.training.oleksandr_bogdanets.pages.SignUpPage;
 import com.epam.training.oleksandr_bogdanets.util.Utils;
 import org.testng.annotations.BeforeMethod;
@@ -20,8 +20,8 @@ public class SignUpTest extends CommonConditions {
 
     @Test
     public void shouldSignUp() {
-        Credentials randomCredentials = Utils.getRandomCredentials();
-        signUpPage.signUpWithEmail(randomCredentials);
+        User randomUser = Utils.getRandomCredentials();
+        signUpPage.signUpWithEmail(randomUser);
         assertTrue(signUpPage.isSignUpSuccessful());
     }
 }

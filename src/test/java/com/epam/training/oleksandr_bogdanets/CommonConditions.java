@@ -1,22 +1,24 @@
 package com.epam.training.oleksandr_bogdanets;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.epam.training.oleksandr_bogdanets.config.PropertiesConfiguration;
+import com.epam.training.oleksandr_bogdanets.driver.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 public class CommonConditions {
 
     protected WebDriver driver;
 
     @BeforeClass
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    @Parameters({"browser", "env"})
+    public void setUp(String browser, String env) {
+        driver = WebDriverFactory.getDriver(browser);
         driver.manage().window().maximize();
+        PropertiesConfiguration.loadPropertiesForEnv(env);
     }
 
     @AfterClass
-    public void stopBrowser() { driver.quit(); }
+    public void stopBrowser() { WebDriverFactory.quitDriver(); }
 }

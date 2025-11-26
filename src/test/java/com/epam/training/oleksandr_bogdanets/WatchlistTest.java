@@ -1,6 +1,6 @@
 package com.epam.training.oleksandr_bogdanets;
 
-import com.epam.training.oleksandr_bogdanets.model.Credentials;
+import com.epam.training.oleksandr_bogdanets.model.User;
 import com.epam.training.oleksandr_bogdanets.pages.LoginPage;
 import com.epam.training.oleksandr_bogdanets.pages.MainPage;
 import com.epam.training.oleksandr_bogdanets.pages.WatchListPage;
@@ -21,8 +21,8 @@ public class WatchlistTest extends CommonConditions {
     public void setUpPage() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openPage();
-        Credentials credentials = Utils.getRealCredentials();
-        mainPage = loginPage.login(credentials);
+        User user = Utils.getRealCredentials();
+        mainPage = loginPage.login(user);
     }
 
     @Test
