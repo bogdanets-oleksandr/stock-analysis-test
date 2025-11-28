@@ -1,5 +1,6 @@
 package com.epam.training.oleksandr_bogdanets.pages;
 
+import com.epam.training.oleksandr_bogdanets.pages.abstractpages.AbstractPageWithConsentPopUp;
 import com.epam.training.oleksandr_bogdanets.pages.stockpage.impl.StockPageImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPage extends AbstractPage {
+public class MainPage extends AbstractPageWithConsentPopUp {
     private static final Logger logger = LogManager.getRootLogger();
     private final static String PAGE_URL = "https://stockanalysis.com/";
 

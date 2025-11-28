@@ -1,7 +1,7 @@
 package com.epam.training.oleksandr_bogdanets.listeners;
 
 import com.epam.training.oleksandr_bogdanets.config.PropertiesConfiguration;
-import com.epam.training.oleksandr_bogdanets.driver.WebDriverFactory;
+import com.epam.training.oleksandr_bogdanets.driver.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -22,7 +22,7 @@ public class ScreenshotTaker implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        WebDriver driver = WebDriverFactory.getDriver();
+        WebDriver driver = WebDriverManager.getDriver();
         try {
             String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
             String path = PATH_TEMPLATE.formatted(PropertiesConfiguration.ENV, result.getName(), timestamp);

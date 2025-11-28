@@ -1,6 +1,6 @@
 package com.epam.training.oleksandr_bogdanets.pages.stockpage.impl;
 
-import com.epam.training.oleksandr_bogdanets.pages.AbstractPage;
+import com.epam.training.oleksandr_bogdanets.pages.abstractpages.AbstractPage;
 import com.epam.training.oleksandr_bogdanets.pages.WatchListPage;
 import com.epam.training.oleksandr_bogdanets.pages.stockpage.StockPage;
 import org.apache.logging.log4j.LogManager;

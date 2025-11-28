@@ -2,6 +2,7 @@ package com.epam.training.oleksandr_bogdanets.pages.stockpage.impl;
 
 import com.epam.training.oleksandr_bogdanets.pages.WatchListPage;
 import com.epam.training.oleksandr_bogdanets.pages.stockpage.Feature;
+import com.epam.training.oleksandr_bogdanets.pages.stockpage.StockPage;
 import com.epam.training.oleksandr_bogdanets.pages.stockpage.StockPageWithFeature;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,11 +14,11 @@ public class StockPageWithMetrics extends StockPageWithFeature implements Featur
     @FindBy(xpath = "//a[@data-title='Metrics']")
     private WebElement metricsButton;
 
-    private StockPageImpl stockPageImpl;
+    private StockPage stockPage;
 
-    public StockPageWithMetrics(WebDriver driver, StockPageImpl stockPageImpl) {
+    public StockPageWithMetrics(WebDriver driver, StockPageImpl stockPage) {
         super(driver);
-        this.stockPageImpl = stockPageImpl;
+        this.stockPage = stockPage;
         PageFactory.initElements(this.driver, this);
     }
 
@@ -34,11 +35,11 @@ public class StockPageWithMetrics extends StockPageWithFeature implements Featur
 
     @Override
     public String getStockName() {
-        return stockPageImpl.getStockName();
+        return stockPage.getStockName();
     }
 
     @Override
     public WatchListPage clickWatchlistButton() {
-        return stockPageImpl.clickWatchlistButton();
+        return stockPage.clickWatchlistButton();
     }
 }

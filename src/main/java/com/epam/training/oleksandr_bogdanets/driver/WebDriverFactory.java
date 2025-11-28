@@ -12,11 +12,7 @@ import org.openqa.selenium.safari.SafariDriver;
 public class WebDriverFactory {
     private static final Logger logger = LogManager.getRootLogger();
 
-    public static final String DEFAULT_BROWSER = "chrome";
-    public static WebDriver driver;
-
-    public static WebDriver getDriver(String browser) {
-        if (driver != null) return driver;
+    public static WebDriver setUpDriver(String browser) {
         logger.info("Setting up a new driver for {}", browser);
         return switch (browser.toLowerCase()) {
             case "edge" -> {
@@ -36,18 +32,6 @@ public class WebDriverFactory {
                 yield new ChromeDriver();
             }
         };
-    }
-
-    public static WebDriver getDriver() {
-        return getDriver(DEFAULT_BROWSER);
-    }
-
-    public static void quitDriver() {
-        logger.info("Quitting driver");
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
     }
 }
 
