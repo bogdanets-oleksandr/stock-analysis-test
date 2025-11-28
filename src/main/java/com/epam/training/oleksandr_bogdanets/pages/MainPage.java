@@ -1,5 +1,6 @@
 package com.epam.training.oleksandr_bogdanets.pages;
 
+import com.epam.training.oleksandr_bogdanets.pages.stockpage.impl.StockPageImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
@@ -28,9 +29,9 @@ public class MainPage extends AbstractPage {
         return this;
     }
 
-    public StockPage searchBySymbol(String symbol) {
+    public StockPageImpl searchBySymbol(String symbol) {
         logger.info("Main Page: Searching by symbol {}", symbol);
         searchBar.sendKeys(symbol, Keys.RETURN);
-        return new StockPage(driver);
+        return new StockPageImpl(driver);
     }
 }

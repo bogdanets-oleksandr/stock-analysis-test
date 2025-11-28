@@ -1,5 +1,8 @@
-package com.epam.training.oleksandr_bogdanets.pages;
+package com.epam.training.oleksandr_bogdanets.pages.stockpage.impl;
 
+import com.epam.training.oleksandr_bogdanets.pages.AbstractPage;
+import com.epam.training.oleksandr_bogdanets.pages.WatchListPage;
+import com.epam.training.oleksandr_bogdanets.pages.stockpage.StockPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class StockPage extends AbstractPage{
+public class StockPageImpl extends AbstractPage implements StockPage {
     private static final Logger logger = LogManager.getRootLogger();
 
     @FindBy(tagName = "h1")
@@ -20,7 +23,7 @@ public class StockPage extends AbstractPage{
     @FindBy(xpath = "//button[contains(normalize-space(.), 'Watchlist')]")
     private WebElement watchListButton;
 
-    public StockPage(WebDriver driver) {
+    public StockPageImpl(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -28,14 +31,16 @@ public class StockPage extends AbstractPage{
     }
 
     @Override
-    protected StockPage openPage() {
+    protected StockPageImpl openPage() {
         return this;
     }
 
+    @Override
     public String getStockName() {
         return stockNameHeader.getText();
     }
 
+    @Override
     public WatchListPage clickWatchlistButton() {
         logger.info("Stock Page: Clicking watchlist button for {}", getStockName());
         watchListButton.click();
