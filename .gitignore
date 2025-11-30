@@ -39,3 +39,6 @@ build/
 
 ### Report Portal Config ###
 **/reportportal.properties
+
+### Screenshots ###
+/screenshots/*
