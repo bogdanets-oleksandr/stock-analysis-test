@@ -4,7 +4,7 @@
     <listeners>
         <listener class-name="com.epam.training.oleksandr_bogdanets.listeners.ScreenshotTaker"/>
     </listeners>
-    <parameter name="browser" value="safari"/>
+    <parameter name="browser" value="chrome"/>
     <parameter name="env" value="prod"/>
 
     <test name="Login test">

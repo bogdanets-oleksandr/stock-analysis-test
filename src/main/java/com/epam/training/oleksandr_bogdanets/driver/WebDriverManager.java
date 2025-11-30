@@ -10,7 +10,8 @@ public class WebDriverManager {
 
     public static WebDriver getDriver(String browser) {
         if (driver != null) return driver;
-        return WebDriverFactory.setUpDriver(browser);
+        driver = WebDriverFactory.setUpDriver(browser);
+        return driver;
     }
 
     public static WebDriver getDriver() {
