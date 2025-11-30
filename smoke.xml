@@ -3,6 +3,7 @@
 <suite name="Smoke suit">
     <listeners>
         <listener class-name="com.epam.training.oleksandr_bogdanets.listeners.ScreenshotTaker"/>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
     </listeners>
     <parameter name="browser" value="chrome"/>
     <parameter name="env" value="prod"/>

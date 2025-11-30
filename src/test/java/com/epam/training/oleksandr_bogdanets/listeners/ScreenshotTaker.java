@@ -1,5 +1,7 @@
 package com.epam.training.oleksandr_bogdanets.listeners;
 
+import com.epam.reportportal.listeners.LogLevel;
+import com.epam.reportportal.service.ReportPortal;
 import com.epam.training.oleksandr_bogdanets.config.PropertiesConfiguration;
 import com.epam.training.oleksandr_bogdanets.driver.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
@@ -29,6 +31,7 @@ public class ScreenshotTaker implements ITestListener {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Files.copy(src.toPath(), Paths.get(path));
             logger.info("Test: {} failed. Screenshot was saved at: {}", result.getName(), path);
+            ReportPortal.emitLog("Failted test screenshot", LogLevel.INFO.name(), new Date(), src);
         } catch (Exception e) {
             logger.warn("Test: {} failed. Screenshot couldn't be saved.", result.getName());
             logger.error(e);
