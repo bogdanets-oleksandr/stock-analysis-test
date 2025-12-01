@@ -12,13 +12,13 @@ import org.openqa.selenium.safari.SafariDriver;
 public class WebDriverFactory {
     private static final Logger logger = LogManager.getRootLogger();
 
-    public static final String DEFAULT_BROWSER = "chrome";
     public static WebDriver driver;
 
-    public static WebDriver getDriver(String browser) {
+    public static WebDriver getDriver() {
         if (driver != null) return driver;
+        String browser = System.getProperty("browser", "chrome");
         logger.info("Setting up a new driver for {}", browser);
-        return switch (browser.toLowerCase()) {
+        driver = switch (browser.toLowerCase()) {
             case "edge" -> {
                 WebDriverManager.edgedriver().setup();
                 yield new EdgeDriver();
@@ -31,15 +31,16 @@ public class WebDriverFactory {
                 WebDriverManager.firefoxdriver().setup();
                 yield new FirefoxDriver();
             }
-            default -> {
+            case "chrome" -> {
                 WebDriverManager.chromedriver().setup();
                 yield new ChromeDriver();
             }
+            default -> {
+                logger.error("Trying to set up a driver for unknown browser: {}", browser);
+                throw new IllegalArgumentException();
+            }
         };
-    }
-
-    public static WebDriver getDriver() {
-        return getDriver(DEFAULT_BROWSER);
+        return driver;
     }
 
     public static void quitDriver() {

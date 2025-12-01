@@ -12,9 +12,9 @@ public class CommonConditions {
     protected WebDriver driver;
 
     @BeforeClass
-    @Parameters({"browser", "env"})
-    public void setUp(String browser, String env) {
-        driver = WebDriverFactory.getDriver(browser);
+    @Parameters({"env"})
+    public void setUp(String env) {
+        driver = WebDriverFactory.getDriver();
         driver.manage().window().maximize();
         PropertiesConfiguration.loadPropertiesForEnv(env);
     }
