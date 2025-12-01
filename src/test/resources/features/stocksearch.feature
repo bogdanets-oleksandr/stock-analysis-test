@@ -6,6 +6,7 @@ Feature: Stock search
     Then The user should see the stock page with header "<stockName>"
 
     Examples:
-    | AAPL | Apple Inc. (AAPL)
-    | GOOGL | Alphabet Inc. (GOOGL)
-    | BMV:EPAM | EPAM Systems, Inc. (BMV:EPAM)
+    | symbol | stockName |
+    | AAPL | Apple Inc. (AAPL) |
+    | GOOGL | Alphabet Inc. (GOOGL) |
+    | EPAM | EPAM Systems, Inc. (EPAM) |

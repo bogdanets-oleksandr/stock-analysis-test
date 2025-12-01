@@ -15,6 +15,7 @@ public class StockSearchSteps {
     @Given("user is on the main page")
     public void userIsOnTheMainPage() {
         mainPage = new MainPage(StockSearchHooks.driver);
+        mainPage.openPage();
     }
 
     @When("the user enters symbol {string} in the search bar and presses enter")
