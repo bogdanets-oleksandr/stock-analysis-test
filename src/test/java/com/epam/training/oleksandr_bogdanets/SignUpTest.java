@@ -22,6 +22,6 @@ public class SignUpTest extends CommonConditions {
     public void shouldSignUp() {
         User randomUser = Utils.getRandomCredentials();
         signUpPage.signUpWithEmail(randomUser);
-        assertTrue(!signUpPage.isSignUpSuccessful());
+        assertTrue(signUpPage.isSignUpSuccessful());
     }
 }
