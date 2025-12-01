@@ -11,7 +11,8 @@ public class StockSearchHooks {
 
     @Before
     public void setUp() {
-        driver = WebDriverManager.getDriver();
+        String browser = System.getProperty("browser", "chrome");
+        driver = WebDriverManager.getDriver(browser);
         driver.manage().window().maximize();
     }
 
