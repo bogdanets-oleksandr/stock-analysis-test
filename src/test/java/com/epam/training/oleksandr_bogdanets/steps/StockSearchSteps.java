@@ -1,6 +1,6 @@
 package com.epam.training.oleksandr_bogdanets.steps;
 
-import com.epam.training.oleksandr_bogdanets.hooks.StockSearchHooks;
+import com.epam.training.oleksandr_bogdanets.hooks.Hooks;
 import com.epam.training.oleksandr_bogdanets.pages.MainPage;
 import com.epam.training.oleksandr_bogdanets.pages.stockpage.StockPage;
 import io.cucumber.java.en.*;
@@ -14,7 +14,7 @@ public class StockSearchSteps {
 
     @Given("user is on the main page")
     public void userIsOnTheMainPage() {
-        mainPage = new MainPage(StockSearchHooks.driver);
+        mainPage = new MainPage(Hooks.driver);
         mainPage.openPage();
     }
 
